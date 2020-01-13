@@ -21,7 +21,7 @@ class Library
     if(book_full_details!=nil)
       return book_full_details[:rental_details]
     else
-      return null
+      return nil
     end
   end
 
