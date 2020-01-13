@@ -8,24 +8,21 @@ class Library
 
   def get_book_full_details(input_title)
     books = @books
-    book_full_details = nil
     for book in books
       if (book[:title] == input_title)
-        book_full_details = book
+        return book
       end
     end
-    return book_full_details
+    return nil
   end
 
   def get_book_rental_details(input_title)
-    books = @books
-    book_rental_details = nil
-    for book in books
-      if (book[:title] == input_title)
-        book_rental_details = book[:rental_details]
-      end
+    book_full_details = get_book_full_details(input_title)
+    if(book_full_details!=nil)
+      return book_full_details[:rental_details]
+    else
+      return null
     end
-    return book_rental_details
   end
 
   def add_book_title(book_title)
