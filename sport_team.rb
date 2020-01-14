@@ -1,6 +1,6 @@
 class SportTeam
 
-  attr_reader :team_name, :players, :coach
+  attr_reader :team_name, :players, :coach, :points
   attr_writer :coach
 
   def initialize(input_team_name, input_players, input_coach)
@@ -24,6 +24,8 @@ class SportTeam
    end
    return found
  end
+
+ # NB for is_player_there you could be the .include?() function to find an item in an array!
 
  def update_points(result)
    if(result == "won")

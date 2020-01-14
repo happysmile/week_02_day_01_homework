@@ -9,7 +9,7 @@ class TestLibrary < MiniTest::Test
 
 
   def setup()
-    books_list =
+    @books =
     [
       {
         title: "Lord of the Rings",
@@ -33,7 +33,9 @@ class TestLibrary < MiniTest::Test
         }
       }
     ]
-    @library = Library.new(books_list)
+
+    @library = Library.new(@books)
+
   end
 
   def test_get_books
@@ -73,8 +75,16 @@ class TestLibrary < MiniTest::Test
           assert_equal({title: "Star Wars", rental_details: { student_name: "Luke", date: "03/09/19" }}, @library.get_book_full_details("Star Wars"))
         end
 
+        def test_get_book_details_not_found
+          assert_nil(@library.get_book_full_details("Hello you"))
+        end
+
         def test_get_book_rental_details
           assert_equal( {student_name: "Ross", date: "07/12/17"}, @library.get_book_rental_details("Jane Eyre"))
+        end
+
+        def test_get_book_rental_details_not_found
+          assert_nil(@library.get_book_rental_details("No title"))
         end
 
         def test_add_book_title

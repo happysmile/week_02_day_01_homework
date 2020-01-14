@@ -2,18 +2,30 @@ class Library
 
   attr_accessor :books
 
+  # constructor
+
   def initialize(input_books)
-    @books = input_books
+    if input_books != nil
+      @books = input_books
+    else
+      @books = []
+    end
   end
 
-  def get_book_full_details(input_title)
+  # NB worth creating a find_book(title) function to be used in several of the following functioins
+
+  def find_book_by_title(book_title)
     books = @books
     for book in books
-      if (book[:title] == input_title)
+      if (book[:title] == book_title)
         return book
       end
     end
     return nil
+  end
+
+  def get_book_full_details(input_title)
+    return find_book_by_title(input_title)
   end
 
   def get_book_rental_details(input_title)
